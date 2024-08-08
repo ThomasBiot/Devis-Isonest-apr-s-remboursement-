@@ -1,29 +1,38 @@
 document.getElementById('calculationForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    // Récupération des valeurs des champs
     const montantDevis = parseFloat(document.getElementById('montantDevis').value) || 0;
+
     const superficieToiture = parseFloat(document.getElementById('superficieToiture').value) || 0;
+    const remboursementToitureM2 = parseFloat(document.getElementById('remboursementToitureM2').value) || 0;
+
     const superficieMurs = parseFloat(document.getElementById('superficieMurs').value) || 0;
+    const remboursementMursM2 = parseFloat(document.getElementById('remboursementMursM2').value) || 0;
+
     const superficieSol = parseFloat(document.getElementById('superficieSol').value) || 0;
+    const remboursementSolM2 = parseFloat(document.getElementById('remboursementSolM2').value) || 0;
+
     const autres = parseFloat(document.getElementById('autres').value) || 0;
-    const remboursementM2 = parseFloat(document.getElementById('remboursementM2').value) || 0;
+    const remboursementAutresM2 = parseFloat(document.getElementById('remboursementAutresM2').value) || 0;
 
-    const nombreM2 = superficieToiture + superficieMurs + superficieSol + autres;
+    // Calcul des remboursements pour chaque section
+    const montantToiture = superficieToiture * remboursementToitureM2;
+    const montantMurs = superficieMurs * remboursementMursM2;
+    const montantSol = superficieSol * remboursementSolM2;
+    const montantAutres = autres * remboursementAutresM2;
 
-    if (nombreM2 <= 0 || remboursementM2 <= 0) {
-        alert("Le nombre de m² total et le remboursement par m² doivent être supérieurs à zéro.");
-        return;
-    }
+    // Calcul du remboursement total
+    const montantTotalRemboursement = montantToiture + montantMurs + montantSol + montantAutres;
 
-    let devisFinal = 0;
-    const montantParM2 = montantDevis / nombreM2;
+    // Calcul du devis final
+    let devisFinal = montantDevis - montantTotalRemboursement;
 
-    if (montantParM2 > remboursementM2) {
-        const difference = montantParM2 - remboursementM2;
-        devisFinal = difference * nombreM2;
-    } else {
+    // Si le remboursement total dépasse le montant du devis initial, appliquer les 90%
+    if (montantTotalRemboursement > montantDevis) {
         devisFinal = montantDevis * 0.9;
     }
 
+    // Affichage du devis final
     document.getElementById('devisFinal').textContent = devisFinal.toFixed(2);
 });

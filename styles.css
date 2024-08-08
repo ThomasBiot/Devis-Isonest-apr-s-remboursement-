@@ -13,8 +13,8 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 400px;
+    max-width: 600px;
+    width: 100%;
     text-align: center;
 }
 
@@ -26,6 +26,26 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.full-width {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 label {
@@ -48,8 +68,13 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    width: 100%;
 }
 
 button:hover {
     background: #218838;
+}
+
+.result {
+    margin-top: 30px;
 }

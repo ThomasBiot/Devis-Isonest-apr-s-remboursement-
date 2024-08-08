@@ -10,27 +10,58 @@
     <div class="container">
         <h1>Devis Isonest après le remboursement des primes</h1>
         <form id="calculationForm">
-            <label for="montantDevis">Montant du devis initial TTC (€) :</label>
-            <input type="number" id="montantDevis" required>
+            <div class="form-grid">
+                <div class="form-column">
+                    <!-- Section Toiture -->
+                    <h3>Toiture</h3>
+                    <label for="superficieToiture">Superficie toiture (m²) :</label>
+                    <input type="number" id="superficieToiture" required>
+                    <label for="remboursementToitureM2">Remboursement par m² (€) :</label>
+                    <input type="number" id="remboursementToitureM2" required>
+                </div>
 
-            <label for="superficieToiture">Superficie toiture (m²) :</label>
-            <input type="number" id="superficieToiture" required>
+                <div class="form-column">
+                    <!-- Section Murs -->
+                    <h3>Murs</h3>
+                    <label for="superficieMurs">Superficie murs (m²) :</label>
+                    <input type="number" id="superficieMurs" required>
+                    <label for="remboursementMursM2">Remboursement par m² (€) :</label>
+                    <input type="number" id="remboursementMursM2" required>
+                </div>
 
-            <label for="superficieMurs">Superficie murs (m²) :</label>
-            <input type="number" id="superficieMurs" required>
+                <div class="form-column">
+                    <!-- Section Sol -->
+                    <h3>Sol</h3>
+                    <label for="superficieSol">Superficie sol (m²) :</label>
+                    <input type="number" id="superficieSol" required>
+                    <label for="remboursementSolM2">Remboursement par m² (€) :</label>
+                    <input type="number" id="remboursementSolM2" required>
+                </div>
 
-            <label for="superficieSol">Superficie sol (m²) :</label>
-            <input type="number" id="superficieSol" required>
+                <div class="form-column">
+                    <!-- Section Autres -->
+                    <h3>Autres</h3>
+                    <label for="autres">Autres (m²) :</label>
+                    <input type="number" id="autres" required>
+                    <label for="remboursementAutresM2">Remboursement par m² (€) :</label>
+                    <input type="number" id="remboursementAutresM2" required>
+                </div>
+            </div>
 
-            <label for="autres">Autres (m²) :</label>
-            <input type="number" id="autres" required>
+            <div class="full-width">
+                <!-- Montant du devis initial -->
+                <label for="montantDevis">Montant du devis initial TTC (€) :</label>
+                <input type="number" id="montantDevis" required>
+            </div>
 
-            <label for="remboursementM2">Remboursement par m² (€) :</label>
-            <input type="number" id="remboursementM2" required>
-
-            <button type="submit">Calcul du devis final</button>
+            <div class="full-width">
+                <button type="submit">Calcul du devis final</button>
+            </div>
         </form>
-        <h2>Devis Isonest après remboursement : <span id="devisFinal">0</span> €</h2>
+        
+        <div class="result">
+            <h2>Devis Isonest après remboursement : <span id="devisFinal">0</span> €</h2>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
